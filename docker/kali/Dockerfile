@@ -2,4 +2,5 @@
 FROM kalilinux/kali-rolling
 
 RUN apt-get update && apt-get install -y metasploit-framework
-RUN apt-get install -y netcat mariadb-client hydra smbclient
+RUN apt-get install -y vim netcat mariadb-client hydra smbclient iputils-ping net-tools
+# vim 入れたらviでできるけどviとvimって違うと思ってたんやけどどうなんやろ？どっちも入れてんのかな？
