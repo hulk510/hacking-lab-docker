@@ -4,6 +4,9 @@ services:
     image: tleemcjr/metasploitable2
     container_name: hacking-metasploitable2
     tty: true
+    networks:
+      hacking-lab:
+        ipv4_address: 10.0.0.5
     expose:
       - "8180"
   dvwa:
@@ -22,6 +25,9 @@ services:
     container_name: hacking-kali-linux
     build: ./docker/kali
     tty: true
+    networks:
+      hacking-lab:
+        ipv4_address: 10.0.0.2
     expose:
       - "5555"
       - "4444"
@@ -35,5 +41,13 @@ services:
       - "80"
     volumes:
       - ./work:/usr/share/nginx/html
-# 多分こいつらどうやって使うんか知らんけどネットワークつなげとかないと使えないよな。
+networks:
+  hacking-lab:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.0/24
+    # external: true # これつけるとここで定義してるコンテナ以外でも他のdocker-compose.ymlで定義したコンテナと通信できるって感じっぽい。
 
+    # https://zaki-hmkc.hatenablog.com/entry/2021/02/26/234357
+    # ipアドレスの指定とサブネットの指定方法
