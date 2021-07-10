@@ -1,37 +1,38 @@
-version: "3"
+version: "3.8"
 services:
   metasploitable:
     image: tleemcjr/metasploitable2
     container_name: hacking-metasploitable2
     tty: true
-    ports:
-      - "8180:8180"
+    expose:
+      - "8180"
   dvwa:
     image: vulnerables/web-dvwa
     container_name: hacking-dvwa
     tty: true
-    ports:
-      - "8889:80"
+    expose:
+      - "80"
   bwapp:
     image: raesene/bwapp
+    container_name: hacking-bwapp
     tty: true
-    ports:
-      - "8890:80"
+    expose:
+      - "80"
   kali:
     container_name: hacking-kali-linux
     build: ./docker/kali
     tty: true
-    ports:
-      - 5555:5555
-      - 4444:4444
+    expose:
+      - "5555"
+      - "4444"
     # volumes:
     #   - ./work:/root
     # 今のところ保持しておきたいものないしいらないかな。
   nginx:
     container_name: hacking-nginx
     image: nginx:latest
-    ports:
-      - "8080:80"
+    expose:
+      - "80"
     volumes:
       - ./work:/usr/share/nginx/html
 # 多分こいつらどうやって使うんか知らんけどネットワークつなげとかないと使えないよな。
