@@ -1,5 +1,18 @@
 version: "3.8"
 services:
+  kali:
+    container_name: hacking-kali-linux
+    build: ./docker/kali
+    tty: true
+    networks:
+      hacking-lab:
+        ipv4_address: 10.0.0.2
+    expose:
+      - "5555"
+      - "4444"
+    # volumes:
+    #   - ./work:/root/
+    # 今のところ保持しておきたいものないしいらないかな。
   metasploitable:
     image: tleemcjr/metasploitable2
     container_name: hacking-metasploitable2
@@ -21,19 +34,6 @@ services:
     tty: true
     expose:
       - "80"
-  kali:
-    container_name: hacking-kali-linux
-    build: ./docker/kali
-    tty: true
-    networks:
-      hacking-lab:
-        ipv4_address: 10.0.0.2
-    expose:
-      - "5555"
-      - "4444"
-    # volumes:
-    #   - ./work:/root
-    # 今のところ保持しておきたいものないしいらないかな。
   nginx:
     container_name: hacking-nginx
     image: nginx:latest
