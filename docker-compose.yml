@@ -10,8 +10,8 @@ services:
     expose:
       - "5555"
       - "4444"
-    # volumes:
-    #   - ./work:/root/
+    volumes:
+      - ./hacking-lab:/root/hacking-lab
     # 今のところ保持しておきたいものないしいらないかな。
   metasploitable:
     image: tleemcjr/metasploitable2
