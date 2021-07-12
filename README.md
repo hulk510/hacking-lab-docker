@@ -1,0 +1,3 @@
+# hacking-lab-docker
+
+vagrantでkaliを起動しようとするとなんでか知らんけどバグでaptでパッケージをインストールできないのでdockerでも動く環境を作る。
