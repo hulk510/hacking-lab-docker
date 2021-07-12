@@ -12,6 +12,7 @@ services:
       - "4444"
     volumes:
       - ./hacking-lab:/root/hacking-lab
+      - ./docker/kali/config/samba/smb.conf:/etc/samba/smb.conf
     # 今のところ保持しておきたいものないしいらないかな。
   metasploitable:
     image: tleemcjr/metasploitable2
