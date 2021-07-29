@@ -26,14 +26,14 @@ services:
     image: vulnerables/web-dvwa
     container_name: hacking-dvwa
     tty: true
-    expose:
-      - "80"
+    ports:
+      - "3333:80"
   bwapp:
     image: raesene/bwapp
     container_name: hacking-bwapp
     tty: true
-    expose:
-      - "80"
+    ports:
+      - "2222:80"
   nginx:
     container_name: hacking-nginx
     image: nginx:latest
