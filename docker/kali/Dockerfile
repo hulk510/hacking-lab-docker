@@ -12,6 +12,7 @@ net-tools \
 man \
 locate \
 hexchat \
-tcpdump
+tcpdump \
+apache2
 # hexchat display設定ができないのかエラーになる。
 # vim 入れたらviでできるけどviとvimって違うと思ってたんやけどどうなんやろ？どっちも入れてんのかな？
