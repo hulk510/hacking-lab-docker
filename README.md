@@ -13,3 +13,8 @@ docker cp {コンテナ名orコンテナID}:/etc/samba/smb.conf ./docker/kali/co
 
 ### 参考
 [Dockerでホストとコンテナ間でのファイルコピー](https://qiita.com/gologo13/items/7e4e404af80377b48fd5)
+
+### RFIできない
+
+msfconsoleでリバースシェルの接続を待っててもtcpコネクションを確立できない。
+多分dockerになってるせいでできてないんやと思う。

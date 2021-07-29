@@ -10,9 +10,12 @@ services:
     expose:
       - "5555"
       - "4444"
+    ports:
+      - "8888:80"
     volumes:
       - ./hacking-lab:/root/hacking-lab
       - ./docker/kali/config/samba/smb.conf:/etc/samba/smb.conf
+      - ./docker/kali/config/html:/var/www/html
   metasploitable:
     image: tleemcjr/metasploitable2
     container_name: hacking-metasploitable2
@@ -31,6 +34,9 @@ services:
   bwapp:
     image: raesene/bwapp
     container_name: hacking-bwapp
+    networks:
+      hacking-lab:
+        ipv4_address: 10.0.0.103
     tty: true
     ports:
       - "2222:80"
