@@ -14,5 +14,7 @@ locate \
 hexchat \
 tcpdump \
 apache2
+
+# RUN echo 1 | apt install -y xrdp
 # hexchat display設定ができないのかエラーになる。
 # vim 入れたらviでできるけどviとvimって違うと思ってたんやけどどうなんやろ？どっちも入れてんのかな？

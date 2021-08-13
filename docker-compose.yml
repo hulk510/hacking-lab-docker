@@ -12,6 +12,7 @@ services:
       - "4444"
     ports:
       - "8888:80"
+      - "3390:3389" # xrdp
     volumes:
       - ./hacking-lab:/root/hacking-lab
       - ./docker/kali/config/samba/smb.conf:/etc/samba/smb.conf
