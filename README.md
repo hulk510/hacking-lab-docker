@@ -18,3 +18,10 @@ docker cp {コンテナ名orコンテナID}:/etc/samba/smb.conf ./docker/kali/co
 
 msfconsoleでリバースシェルの接続を待っててもtcpコネクションを確立できない。
 多分dockerになってるせいでできてないんやと思う。
+
+# xrdpの起動
+installにkeyboard layoutを指定する必要があるみたいでdockerfileで書いてしまうとビルド止まる。
+expectとか使えばいけるんかもしれないけどめんどくさい
+
+xfceってデスクトップ環境を表示できるようにする奴も入れないといけないみたい。
+多分ほんとかのやつは全部勝手に入ってるんかな？これを入れることでdesktop環境を表示できるっぽい。
