@@ -4,6 +4,13 @@ services:
     container_name: hacking-kali-linux
     build: ./docker/kali
     tty: true
+    # /bin/bashで起動するとsystemctlが使えない
+    # privileged: trueと/sbin/initで起動すると使えるみたい。
+    # けど確かprivilegedって特権モードみたいな感じだった気がするからあんまりよくない気もする。
+    # なんでもできないようにsystemctlも操作できないとか？dockerの部分まで触れるようになるとかなんやろか？知らんけど
+    # https://qiita.com/niwasawa/items/85a78aaa8c5234d98fb4
+    privileged: true
+    command: /sbin/init
     networks:
       hacking-lab:
         ipv4_address: 10.0.0.2
