@@ -40,6 +40,8 @@ services:
     ports:
       - "3333:80"
   bwapp:
+  # http://localhost:2222/install.php
+  # 起動した際上記にアクセスしてDBを作成しないとlogin.php表示できない
     image: raesene/bwapp
     container_name: hacking-bwapp
     networks:
