@@ -10,7 +10,7 @@ services:
     # なんでもできないようにsystemctlも操作できないとか？dockerの部分まで触れるようになるとかなんやろか？知らんけど
     # https://qiita.com/niwasawa/items/85a78aaa8c5234d98fb4
     privileged: true
-    command: /sbin/init
+    command: /bin/bash
     networks:
       hacking-lab:
         ipv4_address: 10.0.0.2
