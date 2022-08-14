@@ -6,22 +6,8 @@ ARG UID=1000
 ARG GID=1000
 
 # envは多分環境変数として設定できるからシェルの$HOMEで展開される部分を変えれる？
+# 環境変数変わるならWORKDIRの設定って必要なのか？
 ENV HOME /home/${USERNAME}
-
-# RUN groupadd -g $GID $GROUPNAME && \
-#   useradd -m -s /bin/bash -u $UID -g $GID $USERNAME
-# useraddだけでgroupaddしなくても無かったら勝手に作ってくれるっぽい
-# -s 入れてないと多分起動シェルがshとかになるんかな？
-RUN useradd -m ${USERNAME} -s /bin/bash
-RUN gpasswd -a ${USERNAME} sudo
-
-# chpasswdはuser:passwordで設定されるらしい
-# コマンドでパスワードを設定できるやつって感じかな
-# https://www.mtioutput.com/entry/2018/09/20/135157
-RUN echo "${USERNAME}:asdf" | chpasswd
-
-USER ${USERNAME}
-WORKDIR ${HOME}
 
 RUN apt-get update && apt-get install -y metasploit-framework
 RUN apt-get install -y vim \
@@ -40,3 +26,18 @@ RUN apt-get install -y vim \
 # RUN echo 1 | apt install -y xrdp
 # hexchat display設定ができないのかエラーになる。
 # vim 入れたらviでできるけどviとvimって違うと思ってたんやけどどうなんやろ？どっちも入れてんのかな？
+
+# RUN groupadd -g $GID $GROUPNAME && \
+#   useradd -m -s /bin/bash -u $UID -g $GID $USERNAME
+# useraddだけでgroupaddしなくても無かったら勝手に作ってくれるっぽい
+# -s 入れてないと多分起動シェルがshとかになるんかな？
+RUN useradd -m ${USERNAME} -s /bin/bash
+RUN gpasswd -a ${USERNAME} sudo
+
+# chpasswdはuser:passwordで設定されるらしい
+# コマンドでパスワードを設定できるやつって感じかな
+# https://www.mtioutput.com/entry/2018/09/20/135157
+RUN echo "${USERNAME}:asdf" | chpasswd
+
+USER ${USERNAME}
+WORKDIR ${HOME}
