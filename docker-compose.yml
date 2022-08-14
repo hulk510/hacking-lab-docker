@@ -18,7 +18,7 @@ services:
       - "5555"
       - "4444"
     ports:
-      - "8888:80"
+      - "8765:80"
       - "3390:3389" # xrdp
     volumes:
       - ./hacking-lab:/root/hacking-lab
