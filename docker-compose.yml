@@ -21,7 +21,7 @@ services:
       - "8765:80"
       - "3390:3389" # xrdp
     volumes:
-      - ./hacking-lab:/root/hacking-lab
+      - ./hacking-lab:/hulk510/hacking-lab
       - ./docker/kali/config/samba/smb.conf:/etc/samba/smb.conf
       - ./docker/kali/config/html:/var/www/html
   metasploitable:
