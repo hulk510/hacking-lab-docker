@@ -1,13 +1,15 @@
 # https://www.kali.org/docs/containers/official-kalilinux-docker-images
 FROM kalilinux/kali-rolling
 
-ARG USERNAME=hulk510
 ARG UID=1000
 ARG GID=1000
 
 # envは多分環境変数として設定できるからシェルの$HOMEで展開される部分を変えれる？
 # 環境変数変わるならWORKDIRの設定って必要なのか？
+# これだけで多分userとかは変えれるけど環境変数にも設定しておくのが普通ってことで入れてるのかも？
+# userを追加してないとecho $USERで空白だった。
 ENV HOME /home/${USERNAME}
+ENV USER hulk510
 
 RUN apt-get update && apt-get install -y metasploit-framework
 RUN apt-get install -y vim \
@@ -31,13 +33,13 @@ RUN apt-get install -y vim \
 #   useradd -m -s /bin/bash -u $UID -g $GID $USERNAME
 # useraddだけでgroupaddしなくても無かったら勝手に作ってくれるっぽい
 # -s 入れてないと多分起動シェルがshとかになるんかな？
-RUN useradd -m ${USERNAME} -s /bin/bash
-RUN gpasswd -a ${USERNAME} sudo
+RUN useradd -m ${USER} -s /bin/bash
+RUN gpasswd -a ${USER} sudo
 
 # chpasswdはuser:passwordで設定されるらしい
 # コマンドでパスワードを設定できるやつって感じかな
 # https://www.mtioutput.com/entry/2018/09/20/135157
-RUN echo "${USERNAME}:asdf" | chpasswd
+RUN echo "${USER}:asdf" | chpasswd
 
-USER ${USERNAME}
+USER ${USER}
 WORKDIR ${HOME}
